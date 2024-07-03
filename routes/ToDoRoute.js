@@ -5,13 +5,12 @@ const {
   deleteToDo,
   uptadeToDo,
 } = require("../controllers/ToDoController");
-const logIP = require("../middlewares/logIP");
 
 const router = Router();
 
 router.get("/", getToDO);
-router.post("/save", logIP, saveToDo);
-router.post("/update", logIP, uptadeToDo);
-router.post("/delete", logIP, deleteToDo);
+router.post("/save", saveToDo);
+router.post("/update", uptadeToDo);
+router.post("/delete", deleteToDo);
 
 module.exports = router;
