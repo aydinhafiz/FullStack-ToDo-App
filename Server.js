@@ -1,23 +1,23 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-
-const routes = require("./routes/ToDoRoute");
-
-require("dotenv").config();
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const toDoRoutes = require('./routes/ToDoRoute');
 
 const app = express();
-const PORT = process.env.port || 5000;
-console.log(PORT);
+const port = 3000;
 
-app.use(express.json());
-app.use(cors());
+// MongoDB bağlantısı
+mongoose.connect('mongodb://localhost:27017/todoapp', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
-mongoose
-  .connect(process.env.MONGODB_URL)
-  .then(() => console.log(`Connected to MongoDB...`))
-  .catch((err) => console.log(err));
+// Middleware
+app.use(bodyParser.json());
 
-app.use(routes);
+// Route'lar
+app.use('/api/todo', toDoRoutes);
 
-app.listen(PORT, () => console.log(`Listening on: ${PORT}`));
+app.listen(port, () => {
+  console.log(`Sunucu http://localhost:${port} adresinde çalışıyor`);
+});
