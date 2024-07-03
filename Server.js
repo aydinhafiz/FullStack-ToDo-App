@@ -13,6 +13,8 @@ console.log(PORT);
 app.use(express.json());
 app.use(cors());
 
+app.set('trust proxy', true); // IP adresi için proxy'ye güven
+
 mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => console.log(`Connected to MongoDB...`))
