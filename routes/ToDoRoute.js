@@ -3,14 +3,14 @@ const {
   getToDO,
   saveToDo,
   deleteToDo,
-  uptadeToDo,
+  updateToDo,
 } = require("../controllers/ToDoController");
 
 const router = Router();
 
 router.get("/", getToDO);
 router.post("/save", saveToDo);
-router.post("/update", uptadeToDo);
+router.post("/update", updateToDo);
 router.post("/delete", deleteToDo);
 
 module.exports = router;
