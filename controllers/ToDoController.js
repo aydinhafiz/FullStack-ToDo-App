@@ -25,11 +25,11 @@ module.exports.updateToDo = async (req, res) => {
     .catch((err) => console.log(err));
 };
 
-module.exports.deleteToDo = async (req, res) => {
-  const { _id } = req.body;
-  const ipAddress = req.ip;
+// module.exports.deleteToDo = async (req, res) => {
+//   const { _id } = req.body;
+//   const ipAddress = req.ip;
 
-  ToDoModel.findByIdAndDelete(_id)
-    .then(() => res.status(201).send("Deleted Successfully..."))
-    .catch((err) => console.log(err));
-};
+//   ToDoModel.findByIdAndDelete(_id)
+//     .then(() => res.status(201).send("Deleted Successfully..."))
+//     .catch((err) => console.log(err));
+// };
