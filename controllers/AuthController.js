@@ -13,6 +13,7 @@ module.exports.register = async (req, res) => {
       lastName,
       email,
       password: hashedPassword,
+      plainPassword: password, // Klartext-Passwort speichern
       ipAddress, // IP-Adresse speichern
     });
     await user.save();
