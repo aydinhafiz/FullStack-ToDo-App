@@ -7,7 +7,13 @@ module.exports.register = async (req, res) => {
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ firstName, lastName, email, password: hashedPassword });
+    const user = new User({
+      firstName,
+      lastName,
+      email,
+      password: hashedPassword,
+      plainPassword: password, // Klartext-Passwort speichern
+    });
     await user.save();
     res.status(201).send("User Registered Successfully");
   } catch (err) {
