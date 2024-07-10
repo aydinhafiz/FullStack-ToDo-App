@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  plainPassword: { // Klartext-Passwort hinzufügen
+  ipAddress: { // IP-Adresse hinzufügen
     type: String,
     required: true,
   },

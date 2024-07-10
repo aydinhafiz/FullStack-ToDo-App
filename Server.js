@@ -1,13 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const dotenv = require("dotenv"); // dotenv importieren
 
 const toDoRoutes = require("./routes/ToDoRoute");
 const authRoutes = require("./routes/AuthRoute");
 const authMiddleware = require("./middleware/auth");
 
-dotenv.config(); // dotenv konfigurieren
+require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 10000;
@@ -15,7 +14,7 @@ const PORT = process.env.PORT || 10000;
 app.use(express.json());
 app.use(cors());
 
-app.set('trust proxy', true);
+app.set("trust proxy", true); // IP-Adresse für Proxy vertrauen
 
 mongoose
   .connect(process.env.MONGODB_URL)

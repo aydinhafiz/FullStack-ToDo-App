@@ -4,6 +4,7 @@ const User = require("../models/UserModel");
 
 module.exports.register = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
+  const ipAddress = req.ip; // IP-Adresse erfassen
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -12,7 +13,7 @@ module.exports.register = async (req, res) => {
       lastName,
       email,
       password: hashedPassword,
-      plainPassword: password, // Klartext-Passwort speichern
+      ipAddress, // IP-Adresse speichern
     });
     await user.save();
     res.status(201).send("User Registered Successfully");
