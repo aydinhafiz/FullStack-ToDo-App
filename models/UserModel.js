@@ -1,3 +1,5 @@
+// UserModel.js
+
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
@@ -19,14 +21,17 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   plainPassword: {
-    // Klartext-Passwort hinzufügen
     type: String,
     required: true,
   },
   ipAddress: {
-    // IP-Adresse hinzufügen
     type: String,
     required: true,
+  },
+
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 
