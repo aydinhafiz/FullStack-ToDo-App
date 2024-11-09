@@ -5,7 +5,6 @@ module.exports = (req, res, next) => {
   if (!authHeader) {
     return res.status(401).send("Access denied");
   }
-
   
   
   const token = authHeader.split(" ")[1];
